@@ -1,0 +1,25 @@
+ffmpeg -i minecraft_video_1_16000hz.wav -f segment -segment_time 1 -c copy subfile/out%03d.wav
+
+ffmpeg -i minecraft_video_1_44100hz.wav -ac 1 -ar 16000 minecraft_video_1_16000hz.wav
+
+ffmpeg -i minecraft_video_1_processed.mp4 -ac 1 -ar 16000 minecraft_video_1_16000hz.mp4
+
+ffmpeg -i videos/resampled/minecraft_video_1_16000hz.mp4 datasets/images/out-%03d.png
+
+ffmpeg -i minecraft_video_2_resampled.mp4 -c copy -map 0:a minecraft_video_2_resampled.wav
+
+
+Extract wavefile from mp4
+ffmpeg -i cobblestone_2_resampled.mp4 -vn -acodec pcm_s16le -ac 1 cobblestone_2_resampled.wav
+
+Split wavefile in 1 second long segments
+ffmpeg -i sand_resampled.wav -f segment -segment_time 1 -ar 16000 -c copy sand/sand_%d.wav
+
+Create mp4 with 32 fps and 16kHz mono audio
+ffmpeg -i cobblestone_2.mp4 -vf scale=256:160,setsar=1:1 -r 32 -ac 1 -ar 16000 resampled/cobblestone_2_resampled.mp4
+
+Split mp4 video in segments
+ffmpeg -i minecraft_video_2_resampled.mp4 -c copy -map 0 -segment_time 02:00:00 -f segment -reset_timestamps 1 video2/output%d.mp4
+
+Extract frames from mp4
+ffmpeg -i sand_resampled.mp4 sand_frames/out-%d.png

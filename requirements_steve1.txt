@@ -1,0 +1,10 @@
+gym==0.19
+gym3
+attrs
+gdown
+accelerate==0.18.0 
+wandb
+importlib-resources==5.12
+opencv-python
+matplotlib
+tqdm
