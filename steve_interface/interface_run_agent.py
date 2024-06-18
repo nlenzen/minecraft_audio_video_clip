@@ -65,17 +65,17 @@ def generate_audio_prompt_videos(prompt_embeds, in_model, in_weights, cond_scale
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--clip_path', type=str, default='checkpoints/model/10_layers_extended_4.pth')
+    parser.add_argument('--clip_path', type=str, default='minecraft_audio_video_clip/checkpoints/model/10_layers_extended_4.pth')
     parser.add_argument('--clip_cfg', type=str, default='minecraft_audio_video_clip/configs/10_layers.yaml')
     parser.add_argument('--in_model', type=str, default='STEVE-1/data/weights/vpt/2x.model')
     parser.add_argument('--in_weights', type=str, default='STEVE-1/data/weights/steve1/steve1.weights')
-    parser.add_argument('--prior_path', type=str, default='checkpoints/cvae/cvae_4.pth')
+    parser.add_argument('--prior_path', type=str, default='minecraft_audio_video_clip/checkpoints/cvae/cvae_4.pth')
     parser.add_argument('--prior_cfg', type=str, default='minecraft_audio_video_clip/configs/cvae/cvae.yaml')
     parser.add_argument('--audio_cond_scale', type=float, default=6.0)
     parser.add_argument('--gameplay_length', type=int, default=3000)
     parser.add_argument('--seed', type=float, default=None)
     parser.add_argument('--save_dirpath', type=str, default='videos/generated_videos/')
-    parser.add_argument('--custom_audio_path', type=str, default='datasets/audio_prompts')
+    parser.add_argument('--custom_audio_path', type=str, default='minecraft_audio_video_clip/audio_prompts')
     args = parser.parse_args()
 
     if args.custom_audio_path is not None:
