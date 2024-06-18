@@ -171,44 +171,6 @@ def create_new_audio(video_path, savepath, audio_path, indices):
     video_path = os.path.join(savepath, 'clip_video.mp4')
     new_video.write_videofile(video_path)
 
-    """
-    audio, sr = load(audio_path)
-    audio = audio.squeeze(0)
-    new_audio = []
-    for idx in indices:
-        start = idx * sr
-        end = (idx + 1) * sr
-        new_audio.extend(audio[start:end])
-    new_audio = np.array(new_audio).reshape((-1, 1))
-    audio_clip = AudioArrayClip(new_audio, fps=sr)
-    audio_clip.write_audiofile(os.path.join(savepath, 'test.wav'), fps=sample_rate, ffmpeg_params=["-ac", "1"])
-
-    video = VideoFileClip(video_path)
-    video.audio = audio_clip
-    video_path = os.path.join(savepath, 'clip_video.mp4')
-    video.write_videofile(video_path)
-    """
-
-    """
-    video = VideoFileClip(video_path)
-    audio_dataset = AudioDataset(audio_path, True, False)
-    new_audio = [audio.subclip(idx, idx + 1) for idx in indices]
-    print(type(new_audio[0]))
-    new_audio = concatenate_audioclips(new_audio)
-    new_audio.write_audiofile(os.path.join(savepath, 'test.wav'), fps=sample_rate, ffmpeg_params=["-ac", "1"])
-    # new_audio.set_fps = sample_rate
-    video.audio = new_audio
-    print('Saving video with new audio')
-    video_path = os.path.join(savepath, 'clip_video.mp4')
-    video.write_videofile(video_path)
-    #print('Saving new audio')
-    #audio_savepath = os.path.join(savepath, 'clip_audio.wav')
-    #audio = np.reshape(audio, (1, -1))
-    #print(audio.shape)
-    #audio = torch.tensor(audio)
-    #save(audio_savepath, audio, sample_rate)
-    """
-
 
 def compare_audio_video(similarities):
     diag = torch.diagonal(similarities)
