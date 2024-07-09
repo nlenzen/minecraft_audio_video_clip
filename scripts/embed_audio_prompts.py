@@ -29,7 +29,7 @@ def get_prior_embed(path, clip, prior, device):
 prior_path = 'checkpoints/cvae/audio_prior_projection.pth'
 prior_cfg = 'minecraft_audio_video_clip/configs/cvae/cvae.yaml'
 model_path = 'checkpoints/evaluation_checkpoints/clip_projection_bn_no_activation.pth'
-model_cfg = 'minecraft_audio_video_clip/configs/projection_bn_no_activation.yaml'
+model_cfg = 'minecraft_audio_video_clip/configs/audio_model_cfg.yaml'
 
 embeddings_path = 'datasets/extended_audio_prompts'
 savepath = 'datasets/embedded_prompts/audio_prompts_base_new.npz'

@@ -61,7 +61,6 @@ def train_cvae(model, train_dataloader, test_dataloader, savepath, lr, epochs, b
 
         # Validation step
         model.eval()
-        model.eval()
         val_losses = []
         val_kl_losses = []
         val_recon_losses = []

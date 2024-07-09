@@ -104,7 +104,7 @@ class Projection(nn.Module):
         x = self.RELU(self.linear2(x))
         x = self.RELU(self.linear3(x))
         x = self.linear4(x)
-        if self.bn is not None:
+        if self.final_activation:
             x = self.RELU(x)
         return x
 

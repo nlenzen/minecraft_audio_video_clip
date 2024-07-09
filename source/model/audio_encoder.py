@@ -116,6 +116,6 @@ class ASTModel(nn.Module):
             x = blk(x)
         x = self.v.norm(x)
         x = (x[:, 0] + x[:, 1]) / 2
-
+        
         x = self.mlp_head(x)
         return x
